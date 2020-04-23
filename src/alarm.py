@@ -1,20 +1,21 @@
+# Import tool to control volume
 
 class Alarm:
-    alarmHour: int = None
-    alarmMinute: int = None
-    alarmOn: int = 0
+    _alarmHour: int = None
+    _alarmMinute: int = None
+    _alarmState: int = 0
 
     def soundAlarm(self) -> None:
         # Triggers the alarm noise
         print("Alarm is activated")
 
-    def update(self) -> None:
+    def toggle(self) -> None:
         # Toggles the state of the alarm
         print("Alarm button has been pressed")
-        if alarmOn:
-            alarmOn = 0
+        if _alarmState:
+            _alarmState = 0
         else:
-            alarmOn = 1
+            _alarmState = 1
 
     def earlier(self) -> None:
         # Decrease alarm time by some constant amount

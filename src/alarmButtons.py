@@ -7,8 +7,8 @@ class AlarmObserver(ButtonObserver):
     def __init__(self, newAlarm: Alarm):
         self._alarm = newAlarm
 
-    def updateToggle(self) -> None:
-        self._alarm.update()
+    def update(self) -> None:
+        self._alarm.toggle()
 
     def updateEarlier(self) -> None:
         self._alarm.earlier()
