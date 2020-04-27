@@ -41,7 +41,7 @@ class CalendarApplet():
             self.messages.append(start + event['summary'])
         return self.events
 
-     def display(self) -> str:
+    def display(self):
         message = """
                 <ul class="list-group">
                     <li class="list-group-item"> <h5> Calendar </h5> </li>

@@ -31,7 +31,7 @@ class GmailApplet():
 
     def display(self) -> str:
         self.getData()
-        message = """<div class="pl-2"> <span> Unread Emails: """ + self.messagesUnread + """ <span> </div>"""
+        message = """<div class="pl-2"> <span> Unread Emails: """ + str(self.messagesUnread) + """ <span> </div>"""
         return message
 
 

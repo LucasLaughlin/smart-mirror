@@ -33,6 +33,14 @@ class WeatherApplet():
             location, api_key)
         r = requests.get(url)
         return r.json()
+    
+    def display(self):
+        self.getData()
+        html = """<div class="pl-2"> 
+                    <span class=" " name="temperature"> Degrees:"""  + str(self.temp) +"""</span>
+                    <span class=" " name="cloudcover"> Coverage:""" + str(self.coverage) + """</span>
+                </div>"""
+        
 
 
 def main():

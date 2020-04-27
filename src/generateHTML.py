@@ -1,17 +1,20 @@
 import webbrowser
-from GmailApplet import GmailApplet 
-from rss import RSSApp 
-from CalendarApplet import CalendarApplet 
+from GmailApplet import GmailApplet
+from rss import RSSApp
+from CalendarApplet import CalendarApplet
+from WeatherApplet import WeatherApplet
+from TimeApplet import Time
 
 
 class GenerateHTML():
 
     def __init__(self):
-        self.f = open('/var/www/index/index.html', 'w')
+        self.f = open('index.html', 'w') #/var/www/index/
         self.gmail = GmailApplet()
         self.calender = CalendarApplet()
         self.rss = RSSApp()
-        
+        self.weather = WeatherApplet("Boulder")
+        self.time = Time()
 
     def generate(self):
         message1 = """<div> blah blah blah </div>"""
@@ -48,14 +51,7 @@ class GenerateHTML():
                                 </ul>
                             </div>
                             <div class="col p-0"> </div>
-                            <div class="col m-4"> 
-                                <h1 class=""> 315 </h1>
-                                <div class="pl-2"> 
-                                    <span class=" " name="temperature"> Degrees: </span>
-                                    <span class=" " name="cloudcover"> Coverage: </span>
-            	                <span class=" " name="unreadEmails"> Unread Emails: </span>
-                                </div>
-                                <h3 name="Alarm" class="pt-3"> Alarm:  </h3>
+                            <div class="col m-4">""" + self.time.display() + self.weather.display() + self.gmail.display() + """<h3 name="Alarm" class="pt-3"> Alarm:  </h3>
                             </div>
                         </div>
                         
@@ -71,15 +67,7 @@ class GenerateHTML():
                                 </ul>
             	        </div>
             	        <div class="col p-0"> </div>
-             	        <div class="col m-4 " >
-                                <ul class="list-group">
-                                    <li class="list-group-item"> <h5> RSS </h5> </li>
-                                    <li name="RSSItemOne" class="list-group-item"> This should change </li>
-                                    <li name="RSSItemTwo" class="list-group-item"> Second </li>
-                                    <li name="RSSItemThree" class="list-group-item"> Third </li>
-                                    <li name="RSSItemFour" class="list-group-item"> Fourth </li>
-                                    <li name="RSSItemFive" class="list-group-item"> Fifth </li>
-                                </ul>
+             	        <div class="col m-4 " >""" + self.rss.display()+"""
             	    	</div>
                             </div>
                             <div class="col"> </div>
@@ -92,7 +80,7 @@ class GenerateHTML():
 
         self.f.write(message)
         self.f.close()
-        """ webbrowser.open_new_tab('/var/www/index/index.html') """
+        webbrowser.open_new_tab('index.html') #/var/www/index/
 
 
 def main():
