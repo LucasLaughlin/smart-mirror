@@ -14,6 +14,6 @@ class Time:
         currentDate = timeNow.date()
 
         subprocess.run(["export", "dynData", self.currentTime])
-        subprocess.run(["sed", 's/Time/$(echo $(dynData))/'])
+        subprocess.run(["sed", 's/<h1 class="">.+/<h1 class=""> $(echo $(dynData)) </h1>/'])
 
 
