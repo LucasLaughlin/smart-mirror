@@ -1,6 +1,15 @@
 import feedparser
 import subprocess
 
+class RSSPost:
+    _title: str = ""
+    _description: str = ""
+
+    def __init__(self, postTitle: str, postDescription: str) -> None:
+        _title = postTitle
+        _description = postDescription
+
+
 class RSSApp:
     _feedURL: str = "https://hnrss.org/show?points=200&comments=20"
     _rssPosts = []
@@ -55,12 +64,3 @@ class RSSApp:
         for index in range(5):
             subprocess.run(["export", "dynData="+self._rssPosts[index]._title])
             subprocess.run(["sed", "-i", 's/'+toChange[index]+'/'+changed[index]+"'$(echo $dynData)'<\/li>", "/var/www/html/index.html"])
-
-
-class RSSPost:
-    _title: str = ""
-    _description: str = ""
-
-    def __init__(self, postTitle: str, postDescription: str) -> None:
-        _title = postTitle
-        _description = postDescription
