@@ -2,8 +2,8 @@ import feedparser
 import subprocess
 
 class RSSApp:
-    _feedURLs = ["https://hnrss.org/show?points=200&comments=20"]
-    _rssPosts = []
+    _feedURLs: list[str] = ["https://hnrss.org/show?points=200&comments=20"]
+    _rssPosts: list[RSSPost] = []
 
     # Currently handles one RSS feed
     def getData(self) -> int:
@@ -29,7 +29,7 @@ class RSSApp:
         return 1
 
 
-    def getPostList(self):
+    def getPostList(self) -> list[RSSPost]:
         return _rssPosts
 
 
@@ -58,9 +58,9 @@ class RSSApp:
 
 
 class RSSPost:
-    _title: String = ""
-    _description: String = ""
+    _title: str = ""
+    _description: str = ""
 
-    def __init__(self, postTitle: String, postDescription: String) -> None:
+    def __init__(self, postTitle: str, postDescription: str) -> None:
         _title = postTitle
         _description = postDescription
