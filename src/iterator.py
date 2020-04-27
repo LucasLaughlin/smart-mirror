@@ -3,7 +3,7 @@
 class Iterator:
 
     def __init__(self):
-        self.modules = ["TWTTRApp", "Alarm", "RSSApp"]
+        self.modules = ["TWTTRApp", "Alarm", "RSSApp", "Time"]
 
     def __iter__(self):
         return self
@@ -16,5 +16,7 @@ class Iterator:
             # print("alarm)"
             #if m == "RSSApp":
             # print("RSS")
+            #if m == "Time":
+            # print("time")
 
         return self
