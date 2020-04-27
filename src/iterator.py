@@ -1,4 +1,8 @@
 #from twitter.py import TWTTRApp
+import rss
+import time
+#from alarm.py import Alarm
+#import alarmButtons.py
 
 class Iterator:
 
@@ -13,10 +17,19 @@ class Iterator:
             #if m == "TWTTRApp":
             #    print("twitter!")
             #if m == "Alarm":
-            # print("alarm)"
-            #if m == "RSSApp":
-            # print("RSS")
-            #if m == "Time":
-            # print("time")
+            #    theAlarm = Alarm()
+            #    alarmObs = alarmButtons.AlarmObserver(theAlarm)
+            #    alarmBut = alarmButtons.AlarmButtons()
+            #    alarmBut.registerObserver(alarmObs)
+            #    alarmBut.waitForInput()
 
+            if m == "RSSApp":
+               rssFeed = rss.RSSApp()
+               rssFeed.getData()
+               rss.updatePosts()
+
+            if m == "Time":
+            #   The constructor calls update(), so may remove call to update()
+               concreteTime = time.Time()
+               concreteTime.update()
         return self
