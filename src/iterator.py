@@ -3,7 +3,7 @@
 class Iterator:
 
     def __init__(self):
-        self.modules = ["TWTTRApp"]
+        self.modules = ["TWTTRApp", "Alarm", "RSSApp"]
 
     def __iter__(self):
         return self
@@ -12,5 +12,9 @@ class Iterator:
         for m in self.modules:
             #if m == "TWTTRApp":
             #    print("twitter!")
-            
+            #if m == "Alarm":
+            # print("alarm)"
+            #if m == "RSSApp":
+            # print("RSS")
+
         return self
