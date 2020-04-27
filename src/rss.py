@@ -72,5 +72,6 @@ class RSSApp:
         '''
 
         #subprocess.run(["export", "dynData=This should be changed"])
-        subprocess.run(["sudo sed -i 's/<li name='RSSItemOne.*/<li name='RSSItemOne' class='list-group-item'> Changed <\/li>/' /var/www/html/index.html"], check=True, shell=True)
+        subprocess.run(["sudo sed -i 's/<li name=\'RSSItemOne.*/<li name=\'RSSItemOne\' class=\'list-group-item\'> This should change <\/li>/' /var/www/html/index.html"], check=True, shell=True)
+
 
