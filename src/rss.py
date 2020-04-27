@@ -71,18 +71,6 @@ class RSSApp:
             subprocess.run(["sed", "-i", 's/'+toChange[index]+'/'+changed[index]+"'$(echo $dynData)'<\/li>", "/var/www/html/index.html"])
         '''
 
-        output1 = subprocess.run(["ls"], shell=True, check=True)
         #subprocess.run(["export", "dynData=This should be changed"])
-        #subprocess.run(["sed", "-i", "s/<li name='RSSItemOne'.*/<li name='RSSItemOne' class='list-group-item'> This has been changed <\/li>", "/var/www/html/index.html"], check=True, shell=True)
-
-
-        process = subprocess.Popen(["ls"], stdout=subprocess.PIPE)
-        while True:
-            output = process.stdout.readline()
-            if output == '' and process.poll() is not None:
-                break
-            if output:
-                print(output.strip())
-        rc = process.poll()
-        return rc
+        subprocess.run(["sudo", "sed", "-i", 's/<li name="RSSItemOne.*/<li name="RSSItemOne" class="list-group-item"> Changed <\/li>/', "/var/www/html/index.html"], check=True, shell=True)
 
