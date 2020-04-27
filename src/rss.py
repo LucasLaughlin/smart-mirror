@@ -29,7 +29,7 @@ class RSSApp:
         return 1
 
 
-    def getPostList(self) -> List[RSSPost]:
+    def getPostList(self):
         return _rssPosts
 
 
