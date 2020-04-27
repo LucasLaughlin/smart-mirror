@@ -72,6 +72,20 @@ class RSSApp:
         '''
 
         #subprocess.run(["export", "dynData=This should be changed"])
-        subprocess.run(["sudo sed -i 's/<li name=\'RSSItemOne.*/<li name=\'RSSItemOne\' class=\'list-group-item\'> It changed <\/li>/' /var/www/html/index.html"], check=True, shell=True)
+        #subprocess.run(["sudo sed -i 's/<li name=\'RSSItemOne.*/<li name=\'RSSItemOne\' class=\'list-group-item\'> It changed <\/li>/' /var/www/html/index.html"], check=True, shell=True)
+
+    def display(self) -> str:
+        self.getData()
+        message = """
+                <ul class="list-group">
+                    <li class="list-group-item"> <h5> RSS </h5> </li>
+                    <li class="list-group-item"> """ + self._rssPosts[0]._title + """ </li>
+                    <li class="list-group-item"> """ + self._rssPosts[1]._title + """ </li>
+                    <li class="list-group-item"> """ + self._rssPosts[2]._title + """ </li>
+                    <li class="list-group-item"> """ + self._rssPosts[3]._title+ """ </li>
+                    <li class="list-group-item"> """ + self._rssPosts[4]._title + """ </li>
+                </ul>
+                """
+        return message
 
 
