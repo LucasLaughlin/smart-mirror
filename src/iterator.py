@@ -1,6 +1,6 @@
 #from twitter.py import TWTTRApp
-#from rss.py import RSSApp
-#from time.py import Time
+from rss.py import RSSApp
+from time.py import Time
 #from alarm.py import Alarm
 #import alarmButtons.py
 
@@ -23,12 +23,12 @@ class Iterator:
             #    alarmBut.registerObserver(alarmObs)
             #    alarmBut.waitForInput()
 
-            #if m == "RSSApp":
-            #   rssFeed = RSSApp
-            #   rssFeed.getData()
-            #   rss.updatePosts()
+            if m == "RSSApp":
+               rssFeed = RSSApp
+               rssFeed.getData()
+               rss.updatePosts()
 
-            #if m == "Time":
+            if m == "Time":
             #   The constructor calls update(), so may remove call to update()
                concreteTime = Time()
                concreteTime.update()
