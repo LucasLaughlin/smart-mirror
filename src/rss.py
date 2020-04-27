@@ -2,13 +2,13 @@ import feedparser
 import subprocess
 
 class RSSApp:
-    _feedURLs: list[str] = ["https://hnrss.org/show?points=200&comments=20"]
-    _rssPosts: list[RSSPost] = []
+    _feedURL: str = "https://hnrss.org/show?points=200&comments=20"
+    _rssPosts = []
 
     # Currently handles one RSS feed
     def getData(self) -> int:
 
-        HNFeed = feedparser(_feedURLs[0])
+        HNFeed = feedparser(_feedURL)
 
         # Checks the format of the XML to make sure that it is valid
         if not HNFeed["bozo"]:
