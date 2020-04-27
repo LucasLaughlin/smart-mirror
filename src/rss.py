@@ -40,9 +40,9 @@ class RSSApp:
 
     def updatePosts(self) -> None:
         # Used to select correct element
-        toChange =["<li name="RSSItemOne.*"", "<li name="RSSItemTwo.*"",
-                "<li name="RSSItemThree.*"", "<li name="RSSItemFour.*"",
-                "<li name="RSSItemFive.*""]
+        toChange =["<li name='RSSItemOne.*'", "<li name='RSSItemTwo.*'",
+                "<li name='RSSItemThree.*'", "<li name='RSSItemFour.*'",
+                "<li name='RSSItemFive.*'"]
 
         # The html must be replaced with the appropriate data in each list item
         changed = ['<li name="RSSItemOne" class="list-group-item">',
