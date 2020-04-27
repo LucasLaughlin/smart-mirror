@@ -2,8 +2,8 @@ import feedparser
 import subprocess
 
 class RSSApp:
-    _feedURLs: List[String] = ["https://hnrss.org/show?points=200&comments=20"]
-    _rssPosts: List[RSSPost] = []
+    _feedURLs = ["https://hnrss.org/show?points=200&comments=20"]
+    _rssPosts = []
 
     # Currently handles one RSS feed
     def getData(self) -> int:
