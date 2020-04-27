@@ -1,4 +1,4 @@
-import buttonAbstract.py
+from smart-mirror import buttonAbstract.py 
 import alarm.py
 
 class AlarmObserver(ButtonObserver):
