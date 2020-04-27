@@ -1,5 +1,5 @@
 #from twitter.py import TWTTRApp
-import .rss.py
+import rss.py
 from time.py import Time
 #from alarm.py import Alarm
 #import alarmButtons.py
