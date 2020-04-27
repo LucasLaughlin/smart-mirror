@@ -1,4 +1,4 @@
-from smart-mirror import buttonAbstract.py 
+from smart-mirror import buttonAbstract.py
 import alarm.py
 
 class AlarmObserver(ButtonObserver):
@@ -18,11 +18,6 @@ class AlarmObserver(ButtonObserver):
 
 
 class AlarmButtons(ButtonSubject):
-    # On/Off state of the alarm
-    _state: int = 0
-    # State of earlier and later buttons
-    _later: int = 0
-    _earlier: int = 0
 
     _observers: List[ButtonObserver]
 
@@ -46,29 +41,22 @@ class AlarmButtons(ButtonSubject):
     # is introduced
     def toggleButton(self) -> None:
         # The alarm toggle button is pressed
-        _state = 1
+        self.notifyToggle()
 
     def earlierButton(self) -> None:
         # The earlier button is pressed
-        _earlier = 1
+        self.notifyEarlier()
 
     def laterButton(self) -> None:
         # The later button is pressed
-        _later = 1
+        self.notifyLater()
 
+    def waitForInput(self) -> None:
 
-    def alarmLoop(self) -> None:
-        # Checks the status of each button
-        # Alerts the observer if any buttons have been pressed
-        if _state:
-            notifyToggle()
-            _state = 0
-
-        if _earlier:
-            notifyEarlier()
-            _earlier = 0
-
-        if _later:
-            notifyLater()
-            _later = 0
-
+        action = input("Waiting for input")
+        if action == "a":
+            self.toggleButton()
+        if action == "d":
+            self.laterButton()
+        if action == "s":
+            self.earlierButton()
