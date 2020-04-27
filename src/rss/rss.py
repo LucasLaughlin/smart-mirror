@@ -6,7 +6,7 @@ class RSSApp:
     _rssPosts: List[RSSPost] = []
 
     # Currently handles one RSS feed
-    def getPosts(self) -> int:
+    def getData(self) -> int:
 
         HNFeed = feedparser(_feedURLs[0])
 
