@@ -30,7 +30,7 @@ class Iterator:
 
             #if m == "Time":
             #   The constructor calls update(), so may remove call to update()
-            #   concreteTime = Time()
-            #   concreteTime.update()
+               concreteTime = Time()
+               concreteTime.update()
 
         return self
