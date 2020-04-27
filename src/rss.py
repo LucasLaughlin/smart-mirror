@@ -71,8 +71,10 @@ class RSSApp:
             subprocess.run(["sed", "-i", 's/'+toChange[index]+'/'+changed[index]+"'$(echo $dynData)'<\/li>", "/var/www/html/index.html"])
         '''
 
-        subprocess.run(["ls"], shell=True, check=True)
+        output1 = subprocess.run(["ls"], shell=True, check=True)
         subprocess.run(["export", "dynData=This should be changed"])
-        subprocess.run(["sed", "-i", "s/<li name='RSSItemOne.*'/<li name='RSSItemOne' class='list-group-item'> This has been changed <\/li>", "/var/www/html/index.html"],
+        output2 = subprocess.run(["sed", "-i", "s/<li name='RSSItemOne'.*/<li name='RSSItemOne' class='list-group-item'> This has been changed <\/li>", "/var/www/html/index.html"],
                 check=True, shell=True)
 
+        print(output1)
+        print(output2)
