@@ -18,7 +18,7 @@ class GmailApplet():
         
     def getData(self):
         self.updateService()
-        inbox = self.service.users().labels().get(userId='me',id='INBOX').execute()# pylint: disable=maybe-no-member"
+        inbox = self.service.users().labels().get(userId='me',id='INBOX').execute()
         self.messagesUnread = inbox['messagesUnread']
         print("Number of unread messages: " + str(self.messagesUnread))
         return self.messagesUnread
