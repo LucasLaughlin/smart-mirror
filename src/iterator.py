@@ -1,6 +1,6 @@
 #from twitter.py import TWTTRApp
 import rss
-from time import Time
+import time
 #from alarm.py import Alarm
 #import alarmButtons.py
 
@@ -30,6 +30,6 @@ class Iterator:
 
             if m == "Time":
             #   The constructor calls update(), so may remove call to update()
-               concreteTime = Time()
+               concreteTime = time.Time()
                concreteTime.update()
         return self
