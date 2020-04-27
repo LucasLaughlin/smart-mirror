@@ -19,7 +19,7 @@ class Alarm:
 
             # Updates the HTML
             subprocess.run(["export", "dynData", alarmTime])
-            subprocess.run(["sed", 's/<h3 name="Alarm".+/<h3 name="Alarm" class="pt-3">$(echo $(dynData))</h3>/', "index.html"])
+            subprocess.run(["sed", 's/<h3 name="Alarm".+/<h3 name="Alarm" class="pt-3">$(echo $(dynData))</h3>/', "/var/www/html/index.html"])
 
             _alarmState = 1
         else:
@@ -38,5 +38,5 @@ class Alarm:
     def updateTime(self) -> None:
         alarmTime = "" + self._alarmTime.hour + self._alarmTime.minute
         subprocess.run(["export", "dynData", alarmTime])
-        subprocess.run(["sed", 's/<h3 name="Alarm".+/<h3 name="Alarm" class="pt-3">$(echo $(dynData))</h3>/', "index.html"])
+        subprocess.run(["sed", 's/<h3 name="Alarm".+/<h3 name="Alarm" class="pt-3">$(echo $(dynData))</h3>/', "/var/www/html/index.html"])
 

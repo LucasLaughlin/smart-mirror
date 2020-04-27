@@ -54,7 +54,7 @@ class RSSApp:
         # Performs a find and replace for each of the five list items in the view
         for index in range(5):
             subprocess.run(["export", "dynData", _rssPosts[index]._title])
-            subprocess.run(["sed", 's/'+toChange[index]+'/'+changed[index]+"'", "index.html"])
+            subprocess.run(["sed", 's/'+toChange[index]+'/'+changed[index]+"'", "/var/www/html/index.html"])
 
 
 class RSSPost:
