@@ -6,7 +6,7 @@ class TWTTRApp:
                 access_token_key='nokeys',
                 access_token_secret='nokeys')
 
-    _twttrPosts: List[TWTTRPost] = []
+    _twttrPosts: list[TWTTRPost] = []
 
     # Currently handles one TWTTR feed
     def getPosts(self) -> int:
@@ -32,10 +32,25 @@ class TWTTRApp:
     def flushPosts(self) -> None:
         _twttrPosts = []
 
+    def display(self) -> str:
+        self.getPosts()
+        message = """
+                <ul class="list-group">
+                    <li class="list-group-item"> <h5> Twitter </h5> </li>
+                    <li class="list-group-item"> """ + self._twttrPosts[0]._title + """ </li>
+                    <li class="list-group-item"> """ + self._twttrPosts[1]._title + """ </li>
+                    <li class="list-group-item"> """ + self._twttrPosts[2]._title + """ </li>
+                    <li class="list-group-item"> """ + self._twttrPosts[3]._title + """ </li>
+                    <li class="list-group-item"> """ + self._twttrPosts[4]._title + """ </li>
+                </ul>
+                """
+        return message
+
+
 
 class TWTTRPost:
-    _description: String = ""
+    _description: str = ""
 
-    def __init__(self, postTitle: String, postDescription: String) -> None:
+    def __init__(self, postTitle: str, postDescription: str) -> None:
         _title = postTitle
         _description = postDescription

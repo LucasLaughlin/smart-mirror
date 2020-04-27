@@ -19,6 +19,7 @@ class Time:
         #subprocess.run(["sed", "-i", "s/<h1 class="">.*/<h1 class="">'$(echo $dynData)' <\/h1>/", "/var/www/html/index.html"])
 
     def display(self) -> None:
+        self.update()
         # Updates the HTML
         message = """<h1 class=""> """ + self.currentTime + """ </h1>"""
 
