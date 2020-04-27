@@ -1,4 +1,5 @@
 import feedparser
+import subprocess
 
 class RSSApp:
     _feedURLs: List[String] = ["https://hnrss.org/show?points=200&comments=20"]
@@ -13,9 +14,9 @@ class RSSApp:
         if not HNFeed["bozo"]:
             # Pull out the important info to display
             # Selects top(latest) 10 posts
-            for i in range(10):
-                post1 = RSSPost(HNFeed["item"][0]["title"],
-                            HNFeed["item"][1]["description"])
+            for index in range(5):
+                post1 = RSSPost(HNFeed["item"][index]["title"],
+                            HNFeed["item"][index]["description"])
                 # Add post to list of posts that will be displayed
                 _rssPosts.append(post1)
 
@@ -35,6 +36,25 @@ class RSSApp:
     # Removes posts from display list
     def flushPosts(self) -> None:
         _rssPosts = []
+
+
+    def updatePosts(self) -> None:
+        # Used to select correct element
+        toChange =["<li name="RSSItemOne.+"", "<li name="RSSItemTwo.+"",
+                "<li name="RSSItemThree.+"", "<li name="RSSItemFour.+"",
+                "<li name="RSSItemFive.+""]
+
+        # The html must be replaced with the appropriate data in each list item
+        changed = ['s<li name="RSSItemOne" class="list-group-item">$(echo $dynData)</li>',
+                's<li name="RSSItemTwo" class="list-group-item">$(echo $dynData)</li>',
+                's<li name="RSSItemThree" class="list-group-item">$(echo $dynData)</li>',
+                's<li name="RSSItemFour" class="list-group-item">$(echo $dynData)</li>',
+                's<li name="RSSItemFive" class="list-group-item">$(echo $dynData)</li>']
+
+        # Performs a find and replace for each of the five list items in the view
+        for index in range(5):
+            subprocess.run([export, dynData, _rssPosts[index]._title])
+            subprocess.run([sed, 's/'+toChange[index]+'/'+changed[index]+"'", index.html])
 
 
 class RSSPost:
