@@ -72,9 +72,17 @@ class RSSApp:
         '''
 
         output1 = subprocess.run(["ls"], shell=True, check=True)
-        subprocess.run(["export", "dynData=This should be changed"])
-        output2 = subprocess.run(["sed", "-i", "s/<li name='RSSItemOne'.*/<li name='RSSItemOne' class='list-group-item'> This has been changed <\/li>", "/var/www/html/index.html"],
-                check=True, shell=True)
+        #subprocess.run(["export", "dynData=This should be changed"])
+        #subprocess.run(["sed", "-i", "s/<li name='RSSItemOne'.*/<li name='RSSItemOne' class='list-group-item'> This has been changed <\/li>", "/var/www/html/index.html"], check=True, shell=True)
 
-        print(output1)
-        print(output2)
+
+        process = subprocess.Popen(["ls"], stdout=subprocess.PIPE)
+        while True:
+            output = process.stdout.readline()
+            if output == '' and process.poll() is not None:
+                break
+            if output:
+                print output.strip()
+        rc = process.poll()
+        return rc
+
