@@ -53,6 +53,7 @@ class RSSApp:
                 "<li name='RSSItemThree.*'", "<li name='RSSItemFour.*'",
                 "<li name='RSSItemFive.*'"]
 
+        print(toChange[1])
         # The html must be replaced with the appropriate data in each list item
         changed = ['<li name="RSSItemOne" class="list-group-item">',
                 '<li name="RSSItemTwo" class="list-group-item">',
