@@ -37,10 +37,10 @@ class WeatherApplet():
     def display(self):
         self.getData()
         html = """<div class="pl-2"> 
-                    <span class=" " name="temperature"> Degrees:"""  + str(self.temp) +"""</span>
-                    <span class=" " name="cloudcover"> Coverage:""" + str(self.coverage) + """</span>
+                    <p class=" " name="temperature"> Degrees:"""  + str(self.temp) +"""</p>
+                    <p class=" " name="cloudcover"> Coverage:""" + str(self.coverage) + """</p>
                 </div>"""
-        
+        return html
 
 
 def main():

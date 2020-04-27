@@ -1,6 +1,7 @@
 import feedparser
 import subprocess
 
+
 class RSSPost:
     _title: str = ""
     _description: str = ""
@@ -11,13 +12,14 @@ class RSSPost:
 
 
 class RSSApp:
-    _feedURL: str = "https://hnrss.org/show?points=200&comments=20"
-    _rssPosts = []
 
+    def __init__(self):
+        self._feedURL = "https://hnrss.org/show?points=200&comments=20"
+        self._rssPosts = []
     # Currently handles one RSS feed
-    def getData(self) -> int:
+    def getData(self):
 
-        HNFeed = feedparser(_feedURL)
+        HNFeed = (self._feedURL)
 
         # Checks the format of the XML to make sure that it is valid
         if not HNFeed["bozo"]:
@@ -25,9 +27,9 @@ class RSSApp:
             # Selects top(latest) 10 posts
             for index in range(5):
                 post1 = RSSPost(HNFeed["item"][index]["title"],
-                            HNFeed["item"][index]["description"])
+                                HNFeed["item"][index]["description"])
                 # Add post to list of posts that will be displayed
-                _rssPosts.append(post1)
+                self._rssPosts.append(post1)
 
         else:
             print("RSS app has recieved invalid XML")
@@ -37,44 +39,15 @@ class RSSApp:
         # Returns 1 for successful execution
         return 1
 
-
-    def getPostList(self) -> list:
-        return _rssPosts
-
+    def getPostList(self):
+        return self._rssPosts
 
     # Removes posts from display list
-    def flushPosts(self) -> None:
+
+    def flushPosts(self):
         _rssPosts = []
 
-
-    def updatePosts(self) -> None:
-        # Used to select correct element
-        '''
-        toChange =["<li name='RSSItemOne.*'", "<li name='RSSItemTwo.*'",
-                "<li name='RSSItemThree.*'", "<li name='RSSItemFour.*'",
-                "<li name='RSSItemFive.*'"]
-        '''
-
-        # The html must be replaced with the appropriate data in each list item
-        '''
-        changed = ['<li name="RSSItemOne" class="list-group-item">',
-                '<li name="RSSItemTwo" class="list-group-item">',
-                '<li name="RSSItemThree" class="list-group-item">',
-                '<li name="RSSItemFour" class="list-group-item">',
-                '<li name="RSSItemFive" class="list-group-item">']
-        '''
-
-        # Performs a find and replace for each of the five list items in the view
-        '''
-        for index in range(5):
-            subprocess.run(["export", "dynData="+self._rssPosts[index]._title])
-            subprocess.run(["sed", "-i", 's/'+toChange[index]+'/'+changed[index]+"'$(echo $dynData)'<\/li>", "/var/www/html/index.html"])
-        '''
-
-        #subprocess.run(["export", "dynData=This should be changed"])
-        #subprocess.run(["sudo sed -i 's/<li name=\'RSSItemOne.*/<li name=\'RSSItemOne\' class=\'list-group-item\'> It changed <\/li>/' /var/www/html/index.html"], check=True, shell=True)
-
-    def display(self) -> str:
+    def display(self):
         self.getData()
         message = """
                 <ul class="list-group">
@@ -82,10 +55,8 @@ class RSSApp:
                     <li class="list-group-item"> """ + self._rssPosts[0]._title + """ </li>
                     <li class="list-group-item"> """ + self._rssPosts[1]._title + """ </li>
                     <li class="list-group-item"> """ + self._rssPosts[2]._title + """ </li>
-                    <li class="list-group-item"> """ + self._rssPosts[3]._title+ """ </li>
+                    <li class="list-group-item"> """ + self._rssPosts[3]._title + """ </li>
                     <li class="list-group-item"> """ + self._rssPosts[4]._title + """ </li>
                 </ul>
                 """
         return message
-
-

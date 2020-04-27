@@ -67,7 +67,14 @@ class GenerateHTML():
                                 </ul>
             	        </div>
             	        <div class="col p-0"> </div>
-             	        <div class="col m-4 " >""" + self.rss.display()+"""
+             	        <div class="col m-4 " ><ul class="list-group">
+                    <li class="list-group-item"> <h5> RSS </h5> </li>
+                    <li name="RSSItemOne" class="list-group-item"> This should change </li>
+                    <li name="RSSItemTwo" class="list-group-item"> Second </li>
+                    <li name="RSSItemThree" class="list-group-item"> Third </li>
+                    <li name="RSSItemFour" class="list-group-item"> Fourth </li>
+                    <li name="RSSItemFive" class="list-group-item"> Fifth </li>
+                </ul>"""  """
             	    	</div>
                             </div>
                             <div class="col"> </div>
