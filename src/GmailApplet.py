@@ -18,10 +18,11 @@ class GmailApplet():
         
     def getData(self):
         self.updateService()
-        inbox = self.service.users().labels().get(userId='me',id='INBOX').execute()# pylint: disable=maybe-no-member"
+        inbox = self.service.users().labels().get(userId='me',id='INBOX').execute()
         self.messagesUnread = inbox['messagesUnread']
         print("Number of unread messages: " + str(self.messagesUnread))
-        return self.messagesUnreadself
+        return self.messagesUnread
+        
     #TODO: figure out REST api to standardize api use across applets
     """ def getData(self):
         url = "https://www.googleapis.com/gmail/v1/users/me/labels/INBOX"
