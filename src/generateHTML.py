@@ -92,7 +92,7 @@ class GenerateHTML():
 
         self.f.write(message)
         self.f.close()
-        webbrowser.open_new_tab('/var/www/index/index.html')
+        """ webbrowser.open_new_tab('/var/www/index/index.html') """
 
 
 def main():
