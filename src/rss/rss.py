@@ -40,21 +40,21 @@ class RSSApp:
 
     def updatePosts(self) -> None:
         # Used to select correct element
-        toChange =["<li name="RSSItemOne.+"", "<li name="RSSItemTwo.+"",
-                "<li name="RSSItemThree.+"", "<li name="RSSItemFour.+"",
-                "<li name="RSSItemFive.+""]
+        toChange =["<li name="RSSItemOne.*"", "<li name="RSSItemTwo.*"",
+                "<li name="RSSItemThree.*"", "<li name="RSSItemFour.*"",
+                "<li name="RSSItemFive.*""]
 
         # The html must be replaced with the appropriate data in each list item
-        changed = ['s<li name="RSSItemOne" class="list-group-item">$(echo $dynData)</li>',
-                's<li name="RSSItemTwo" class="list-group-item">$(echo $dynData)</li>',
-                's<li name="RSSItemThree" class="list-group-item">$(echo $dynData)</li>',
-                's<li name="RSSItemFour" class="list-group-item">$(echo $dynData)</li>',
-                's<li name="RSSItemFive" class="list-group-item">$(echo $dynData)</li>']
+        changed = ['<li name="RSSItemOne" class="list-group-item">',
+                '<li name="RSSItemTwo" class="list-group-item">',
+                '<li name="RSSItemThree" class="list-group-item">',
+                '<li name="RSSItemFour" class="list-group-item">',
+                '<li name="RSSItemFive" class="list-group-item">']
 
         # Performs a find and replace for each of the five list items in the view
         for index in range(5):
-            subprocess.run(["export", "dynData", _rssPosts[index]._title])
-            subprocess.run(["sed", 's/'+toChange[index]+'/'+changed[index]+"'", "/var/www/html/index.html"])
+            subprocess.run(["export", "dynData="+self._rssPosts[index]._title])
+            subprocess.run(["sed", "-i", 's/'+toChange[index]+'/'+changed[index]+"'$(echo $dynData)'<\/li>", "/var/www/html/index.html"])
 
 
 class RSSPost:
