@@ -1,5 +1,5 @@
 #from twitter.py import TWTTRApp
-from rss.py import RSSApp
+import rss.py
 from time.py import Time
 #from alarm.py import Alarm
 #import alarmButtons.py
@@ -24,7 +24,7 @@ class Iterator:
             #    alarmBut.waitForInput()
 
             if m == "RSSApp":
-               rssFeed = RSSApp
+               rssFeed = rss.RSSApp()
                rssFeed.getData()
                rss.updatePosts()
 
