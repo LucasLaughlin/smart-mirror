@@ -7,6 +7,7 @@ class GenerateHTML():
         self.f = open('mirrordisplay.html', 'w')
 
     def generate(self):
+        message1 = """<div> blah blah blah </div>"""
         message = """
             <!DOCTYPE html>
             <html lang="en-US">
@@ -25,6 +26,7 @@ class GenerateHTML():
                 <body>
                 <div class="container">
                     <div class="row fixed-top">
+                    """ + message1 + """
                         <div class="col m-4"> 
                             <ul class="list-group">
                                 <li class="list-group-item"> <h5> Gmail Notifications </h5> </li>
