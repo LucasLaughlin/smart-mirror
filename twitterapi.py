@@ -4,8 +4,8 @@ import twitter
 
 api = twitter.Api(consumer_key='wKLcgF2gPeJUFT5aMgB4UU5p7',
 		consumer_secret='g86W2E1K2oqBtRr5U9W5luZOuT3n7avEqqkezvo3ULFgUqedyu',
-		access_token_key='nokeys',
-		access_token_secret='nokeys')
+		access_token_key='632591962-DdnySfMmxLdHHpi8EK42wSMI0k5n2AWDHLwO6NA9',
+		access_token_secret='IrKNzqF2fNNrSS2uS6wR6FpEAT1aB6E5armNv8UiclJpW')
 
 # Twitter timeline info taken from here 
 # https://python-twitter.readthedocs.io/en/latest/twitter.html?highlight=timeline#twitter.api.Api.GetHomeTimeline
