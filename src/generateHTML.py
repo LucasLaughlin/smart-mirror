@@ -3,7 +3,7 @@ from GmailApplet import GmailApplet
 from rss import RSSApplet
 from CalendarApplet import CalendarApplet
 from WeatherApplet import WeatherApplet
-from TimeApplet import Time
+from TimeApplet import TimeApplet
 from api_twitter import twitterApp
 
 
@@ -15,7 +15,7 @@ class GenerateHTML():
         self.calendar1 = CalendarApplet()
         self.rss = RSSApplet()
         self.weather = WeatherApplet("Boulder")
-        self.time = Time()
+        self.clock = ClockApplet()
         #self.twttr = twitterApp()
 
     def generate(self):
@@ -44,7 +44,7 @@ class GenerateHTML():
                         <div class="row fixed-top">
                             """ + self.calendar1.display() + """
                             <div class="col p-0"> </div>
-                            <div class="col m-4">""" + self.time.display() + self.weather.display() + self.gmail.display() + """<h3 name="Alarm" class="pt-3"> Alarm:  </h3>
+                            <div class="col m-4">""" + self.clock.display() + self.weather.display() + self.gmail.display() + """<h3 name="Alarm" class="pt-3"> Alarm:  </h3>
                             </div>
                         </div>
 
