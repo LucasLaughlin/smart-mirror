@@ -20,7 +20,7 @@ class ClockApplet:
         self.curYear = today.year
     
     def display(self) -> None:
-        self.update()
+        self.getData()
         # Updates the HTML
         html = """<div class="row"><h1> """ + str(self.curHour)+ ":"+ str(self.curMin) + """ </h1>
                     <span class="pl-2 pt-1" >""" + str(self.curMonth) + "/" + str(self.curDay) + "/" + str(self.curYear) +""" </span> </div>""" 
