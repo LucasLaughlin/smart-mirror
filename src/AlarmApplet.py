@@ -22,6 +22,6 @@ class AlarmApplet(ClockApplet):
     def display(self) -> None:
         self.getData()
         if self.alarmTriggered: color = 'red'
-        else: color = 'whhite'
-        html = """<h3 styl="color: %s> """%color + str(self.alarmHour)+ ":"+ str(self.alarmMin) + """ </h3>"""
+        else: color = 'white'
+        html = """<h3 > """ + str(self.alarmHour)+ ":"+ str(self.alarmMin) + """ </h3>"""
         return html
