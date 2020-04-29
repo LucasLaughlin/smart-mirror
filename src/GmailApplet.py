@@ -1,12 +1,11 @@
 from googleapiclient.discovery import build
 from Creds import Creds
 import requests
+from Applet import Applet
 
 # If modifying these scopes, delete the file token.pickle.
 
-
-
-class GmailApplet():
+class GmailApplet(Applet):
     def __init__(self):
         self.messagesUnread = None
         self.service = None

@@ -1,5 +1,6 @@
 import feedparser
 import subprocess
+from Applet import Applet
 
 
 class RSSPost:
@@ -11,7 +12,7 @@ class RSSPost:
         self._description = postDescription
 
 
-class RSSApplet:
+class RSSApplet(Applet):
 
     def __init__(self):
         self._feedURL = "https://hnrss.org/show?points=200&comments=20"

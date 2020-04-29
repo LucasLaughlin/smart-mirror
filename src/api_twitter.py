@@ -1,6 +1,7 @@
 from twitter import *
+from Applet import Applet
 
-class twitterApp:
+class twitterApp(Applet):
     def __init__(self):
         self.timeline = ""
         self.feed = list()
@@ -15,7 +16,6 @@ class twitterApp:
             self.feed = twts
         else:
             print("Error in pulling twitter data!")
-            return 1
 
 
     def display(self):

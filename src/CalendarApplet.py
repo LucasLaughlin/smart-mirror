@@ -1,9 +1,10 @@
 import datetime
 from googleapiclient.discovery import build
 from Creds import Creds
+from Applet import Applet
 
 
-class CalendarApplet():
+class CalendarApplet(Applet):
 
     def __init__(self):
         self.service = None
