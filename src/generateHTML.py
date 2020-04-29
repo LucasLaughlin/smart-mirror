@@ -16,7 +16,7 @@ class GenerateHTML():
         self.rss = RSSApplet()
         self.weather = WeatherApplet("Boulder")
         self.time = Time()
-        #self.tweets = twitterApp().getPosts()
+        #self.twttr = twitterApp()
 
     def generate(self):
         message1 = """<div> blah blah blah </div>"""
@@ -49,16 +49,10 @@ class GenerateHTML():
                         </div>
 
                        <div class="row fixed-bottom">
-                            <div class="col m-4">
-                                <ul class="list-group">
-                                    <li class="list-group-item"> <h5> Twitter Highlights </h5> </li>
-                                    <li name="TwitterItemOne" class="list-group-item"> + self.tweets[0]+ </li>
-                                    <li name="TwitterItemTwo" class="list-group-item"> +self.tweets[1]+</li>
-                                    <li name="TwitterItemThree" class="list-group-item"> + self.tweets[2] +</li>
-                                    <li name="TwitterItemFour" class="list-group-item"> + self.tweets[3] +</li>
-                                    <li name="TwitterItemFive" class="list-group-item"> + self.tweets[4] +</li>
-                                </ul>
-            	        </div>
+                        """
+                        #+ self.twttr.display()
+                        +
+                        """
             	        <div class="col p-0"> </div>
                         """ + self.rss.display() + """
                             </div>
