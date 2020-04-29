@@ -1,4 +1,5 @@
 from AlarmApplet import AlarmApplet
+from WhiteNoise import WhiteNoiseApplet
 from generateHTML import GenerateHTML
 import time
 import pygame
@@ -11,6 +12,7 @@ def main():
     pygame.key.set_repeat(100, 100)
 
     concreteAlarm = AlarmApplet()
+    noisemaker = WhiteNoiseApplet()
 
     viewGenerator = GenerateHTML()
 
@@ -32,6 +34,10 @@ def main():
                 if event.key == pygame.K_d:
                     # Increments alarm time by fiteen minutes
                     concreteAlarm.later()
+
+                # If key pressed is 'w'
+                # if event.key == pygame.K_w:
+                #    noisemaker.toggleState()
 
         viewGenerator.generateHTML()
 
