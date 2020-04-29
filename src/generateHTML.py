@@ -1,6 +1,6 @@
 import webbrowser
 from GmailApplet import GmailApplet
-from rss import RSSApp
+from rss import RSSApplet
 from CalendarApplet import CalendarApplet
 from WeatherApplet import WeatherApplet
 from TimeApplet import Time
@@ -12,11 +12,11 @@ class GenerateHTML():
     def __init__(self):
         self.f = open('index.html', 'w') #/var/www/index/
         self.gmail = GmailApplet()
-        self.calender = CalendarApplet()
-        self.rss = RSSApp()
+        self.calendar1 = CalendarApplet()
+        self.rss = RSSApplet()
         self.weather = WeatherApplet("Boulder")
         self.time = Time()
-        self.tweets = twitterApp().getPosts()
+        #self.tweets = twitterApp().getPosts()
 
     def generate(self):
         message1 = """<div> blah blah blah </div>"""
@@ -42,50 +42,34 @@ class GenerateHTML():
                     <body>
                     <div class="container">
                         <div class="row fixed-top">
-                            <div class="col m-4"> 
-                                <ul class="list-group">
-                                    <li class="list-group-item"> <h5> Calendar Notifications </h5> </li>
-                                    <li name="CalendarItemOne" class="list-group-item"> First </li>
-                                    <li name="CalendarItemTwo" class="list-group-item"> Second </li>
-                                    <li name="CalendarItemThree" class="list-group-item"> Third </li>
-                                    <li name="CalendarItemFour" class="list-group-item"> Fourth </li>
-                                    <li name="CalendarItemFive" class="list-group-item"> Fifth </li>
-                                </ul>
-                            </div>
+                            """ + self.calendar1.display() + """
                             <div class="col p-0"> </div>
                             <div class="col m-4">""" + self.time.display() + self.weather.display() + self.gmail.display() + """<h3 name="Alarm" class="pt-3"> Alarm:  </h3>
                             </div>
                         </div>
-                        
-                        <div class="row fixed-bottom">
-                            <div class="col m-4"> 
+
+                       <div class="row fixed-bottom">
+                            <div class="col m-4">
                                 <ul class="list-group">
                                     <li class="list-group-item"> <h5> Twitter Highlights </h5> </li>
-                                    <li name="TwitterItemOne" class="list-group-item"> """ + self.tweets[0]+ """ </li>
-                                    <li name="TwitterItemTwo" class="list-group-item"> """ +self.tweets[1]+"""</li>
-                                    <li name="TwitterItemThree" class="list-group-item"> """ + self.tweets[2] + """</li>
-                                    <li name="TwitterItemFour" class="list-group-item"> """ + self.tweets[3] + """</li>
-                                    <li name="TwitterItemFive" class="list-group-item"> """ + self.tweets[4] + """</li>
+                                    <li name="TwitterItemOne" class="list-group-item"> + self.tweets[0]+ </li>
+                                    <li name="TwitterItemTwo" class="list-group-item"> +self.tweets[1]+</li>
+                                    <li name="TwitterItemThree" class="list-group-item"> + self.tweets[2] +</li>
+                                    <li name="TwitterItemFour" class="list-group-item"> + self.tweets[3] +</li>
+                                    <li name="TwitterItemFive" class="list-group-item"> + self.tweets[4] +</li>
                                 </ul>
             	        </div>
             	        <div class="col p-0"> </div>
-             	        <div class="col m-4 " ><ul class="list-group">
-                    <li class="list-group-item"> <h5> RSS </h5> </li>
-                    <li name="RSSItemOne" class="list-group-item"> This should change </li>
-                    <li name="RSSItemTwo" class="list-group-item"> Second </li>
-                    <li name="RSSItemThree" class="list-group-item"> Third </li>
-                    <li name="RSSItemFour" class="list-group-item"> Fourth </li>
-                    <li name="RSSItemFive" class="list-group-item"> Fifth </li>
-                </ul>"""  """
-            	    	</div>
+                        """ + self.rss.display() + """
                             </div>
                             <div class="col"> </div>
                             <div class="col"> </div>
-                
+
                         </div>
                     </div>
                     </body>
-                </html>"""
+                </html>
+                """
 
         self.f.write(message)
         self.f.close()
@@ -93,7 +77,6 @@ class GenerateHTML():
 
 
 def main():
-    # Calender unit tests
     generateView = GenerateHTML()
     generateView.generate()
 
