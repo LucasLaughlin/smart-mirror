@@ -4,6 +4,7 @@ from rss import RSSApp
 from CalendarApplet import CalendarApplet
 from WeatherApplet import WeatherApplet
 from TimeApplet import Time
+from api_twitter import twitterApp
 
 
 class GenerateHTML():
@@ -15,6 +16,7 @@ class GenerateHTML():
         self.rss = RSSApp()
         self.weather = WeatherApplet("Boulder")
         self.time = Time()
+        self.tweets = twitterApp().getPosts()
 
     def generate(self):
         message1 = """<div> blah blah blah </div>"""
@@ -59,11 +61,11 @@ class GenerateHTML():
                             <div class="col m-4"> 
                                 <ul class="list-group">
                                     <li class="list-group-item"> <h5> Twitter Highlights </h5> </li>
-                                    <li name="TwitterItemOne" class="list-group-item"> RT @reeseynem: #outwest https://t.co/tA4maglajG </li>
-                                    <li name="TwitterItemTwo" class="list-group-item"> Why are men more likely to get worse symptoms and die from covid-19? https://t.co/XLOvhxJm6P https://t.co/vni5sHzQt4 </li>
-                                    <li name="TwitterItemThree" class="list-group-item"> https://t.co/1j7iyDaO1I </li>
-                                    <li name="TwitterItemFour" class="list-group-item"> Never made it as a wise man </li>
-                                    <li name="TwitterItemFive" class="list-group-item"> RT @chefjoseandres: And he did the same in Puerto Rico after Maria, and many other times! He is a great guy, friend, leader....tones of car… </li>
+                                    <li name="TwitterItemOne" class="list-group-item"> """ + self.tweets[0]+ """ </li>
+                                    <li name="TwitterItemTwo" class="list-group-item"> """ +self.tweets[1]+"""</li>
+                                    <li name="TwitterItemThree" class="list-group-item"> """ + self.tweets[2] + """</li>
+                                    <li name="TwitterItemFour" class="list-group-item"> """ + self.tweets[3] + """</li>
+                                    <li name="TwitterItemFive" class="list-group-item"> """ + self.tweets[4] + """</li>
                                 </ul>
             	        </div>
             	        <div class="col p-0"> </div>
