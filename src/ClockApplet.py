@@ -9,7 +9,7 @@ class ClockApplet:
         self.curMonth = None
         self.curYear = None
         
-    def update(self) -> None:
+    def getData(self) -> None:
         # Gets current time and date
         timeNow = datetime.datetime.now()
         self.curHour = timeNow.hour
