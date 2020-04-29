@@ -5,16 +5,15 @@ from Applet import Applet
 
 class RSSPost:
     _title: str = ""
-    _description: str = ""
 
-    def __init__(self, postTitle: str, postDescription: str) -> None:
+    def __init__(self, postTitle: str) -> None:
         self._title = postTitle
-        self._description = postDescription
 
 
 class RSSApplet(Applet):
 
     def __init__(self):
+        # The RSS url. getData could be altered to accept a list of RSS urls (expanded feature set)
         self._feedURL = "https://hnrss.org/show?points=200&comments=20"
         self._rssPosts = []
 
@@ -27,22 +26,17 @@ class RSSApplet(Applet):
         # Checks the format of the XML to make sure that it is valid
         if not HNFeed["bozo"]:
             # Pull out the important info to display
-            # Selects top(latest) 10 posts
+            # Selects top(latest) 5 posts that fit query criteria
             for index in range(5):
-                post1 = RSSPost(HNFeed['entries'][index]['title'],
-                                HNFeed['entries'][index]['description'])
+                post1 = RSSPost(HNFeed['entries'][index]['title'])
+
                 # Add post to list of posts that will be displayed
                 self._rssPosts.append(post1)
-
         else:
             print("RSS app has recieved invalid XML")
-            # Returns 0 for failed execution
-            return 0
-
-        # Returns 1 for successful execution
-        return 1
 
     def display(self):
+        # Fetches the RSS data using the getData before building the applet's display html
         self.getData()
         message = """
             <div class="col m-4 " >
