@@ -1,5 +1,4 @@
 import feedparser
-import subprocess
 from Applet import Applet
 from ListApplet import ListApplet
 from DataEntry import DataEntry
