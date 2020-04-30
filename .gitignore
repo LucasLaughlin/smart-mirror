@@ -1,3 +1,5 @@
 # ignore twitter api keys
 TWITTERAPIKEYS.txt
 credentials.json
+config.ini
+token.pickle
