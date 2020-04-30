@@ -14,8 +14,10 @@ class AlarmApplet(ClockApplet):
         # when the button is pressed
         if self.alarmOn:
             self.alarmOn = 0
+            print("Alarm is active")
         if not self.alarmOn:
             self.alarmOn = 1
+            print("Alarm is inactive")
 
     def checkAlarmTime(self) -> bool:
         # Checks whether the time is equal to the alarm time
