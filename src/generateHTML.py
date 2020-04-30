@@ -10,15 +10,15 @@ from api_twitter import twitterApp
 
 class GenerateHTML():
 
-    def __init__(self):
+    def __init__(self, concAlarm=CalendarApplet()):
         self.f = open('index.html', 'w') #/var/www/index/
         self.gmail = GmailApplet()
-        self.calendar1 = CalendarApplet()
+        self.calendar1 = concAlarm
         self.rss = RSSApplet()
         self.weather = WeatherApplet("Boulder")
         self.clock = ClockApplet()
         self.alarm = AlarmApplet()
-        #self.twttr = twitterApp()
+        self.twttr = twitterApp()
 
     def generate(self):
         message = """<!DOCTYPE html>
@@ -45,12 +45,12 @@ class GenerateHTML():
                         <div class="row fixed-top">
                             """ + self.calendar1.display() + """
                             <div class="col p-0"> </div>
-                            <div class="col m-4">""" + self.clock.display() + self.weather.display() + self.gmail.display() + self.alarm.display()  +"""
+                            <div class="col m-4">""" + self.clock.display() + self.weather.display() + self.gmail.display() +"""
                             </div>
                         </div>
 
                        <div class="row fixed-bottom">
-                        + self.twttr.display()+
+                       """ + self.twttr.display() + """
             	        <div class="col p-0"> </div>
                         """ + self.rss.display() + """
                             </div>

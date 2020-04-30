@@ -1,35 +1,21 @@
 from twitter import *
 from Applet import Applet
+from DataEntry import DataEntry
+from ListApplet import ListApplet
 
-class twitterApp(Applet):
+class twitterApp(ListApplet):
     def __init__(self):
-        self.timeline = ""
-        self.feed = list()
+        super()
+        self.title = "Twitter"
+        self.entries = list()
 
     # Get your "home" timeline
     def getData(self):
-        t = Twitter(auth=OAuth('nokeys', 'nokeys', 'nokeys', 'nokeys'))
-        if t.statuses.home_timeline()[0]['text'] is not None:
+        t = Twitter(auth=OAuth('Key goes here', 'Key goes here', 'Key goes here', 'Key goes here'))
+        if t.statuses.home_timeline()[0]['text'] != None:
             twts = []
             for i in range(5):
-                twts.append(t.statuses.home_timeline()[i]['text'])
-            self.feed = twts
+                twts.append(DataEntry(t.statuses.home_timeline()[i]['text']))
+            self.entries = twts
         else:
             print("Error in pulling twitter data!")
-
-
-    def display(self):
-        self.getData()
-        message = """
-            <div class="col m-4">
-                <ul class="list-group">
-                    <li class="list-group-item"> <h5> Twitter Highlights </h5> </li>
-                    <li name="TwitterItemOne" class="list-group-item"> + self.tweets[0]+ </li>
-                    <li name="TwitterItemTwo" class="list-group-item"> +self.tweets[1]+</li>
-                    <li name="TwitterItemThree" class="list-group-item"> + self.tweets[2] +</li>
-                    <li name="TwitterItemFour" class="list-group-item"> + self.tweets[3] +</li>
-                    <li name="TwitterItemFive" class="list-group-item"> + self.tweets[4] +</li>
-                </ul>
-            </div>
-        """
-        return message

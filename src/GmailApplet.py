@@ -11,17 +11,17 @@ class GmailApplet(Applet):
         self.service = None
         self.creds = Creds()
         self.updateService()
-    
+
     def updateService(self):
         self.service = build('gmail', 'v1', credentials=self.creds.getCreds())
-    
+
     def getData(self):
         self.updateService()
         inbox = self.service.users().labels().get(userId='me',id='INBOX').execute()
         self.messagesUnread = inbox['messagesUnread']
         print("Number of unread messages: " + str(self.messagesUnread))
         return self.messagesUnread
-    
+
     def display(self) -> str:
         self.getData()
         message = """<div class="pl-2"> <span> Unread Emails: """ + str(self.messagesUnread) + """ <span> </div>"""
@@ -36,4 +36,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

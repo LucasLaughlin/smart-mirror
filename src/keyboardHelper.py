@@ -1,6 +1,6 @@
 import pynput
 from pynput import keyboard
-from CalendarApplet import CalendarApplet
+from AlarmApplet import AlarmApplet
 # Made with https://pynput.readthedocs.io/en/latest/keyboard.html
 
 class KeyboardHelper:
@@ -8,9 +8,21 @@ class KeyboardHelper:
     def __init__(self, concAlarm):
         self.alarm = concAlarm
 
-
     def on_press(key, letter):
-        try:
+        pass
+
+    def on_release(key, letter):
+        #Add your code to stop motor
+        if key == keyboard.Key.esc:
+            # Stop listener
+            # Stop the Robot Code
+            return False
+        if 'char' in dir(key):     #check if char method exists,
+            if key.char == 'a':    #check if it is 'q' key
+                print("Alarm On")
+                self.alarm.toggleState()
+
+            """
             # If key pressed is 'a'
             if letter == 'a':
                 # Toggles whether the alarm is active
@@ -26,20 +38,8 @@ class KeyboardHelper:
             if letter == 'd':
                 # Increments alarm time by fiteen minutes
                 self.alarm.later()
+            """
 
-            # If key pressed is 'w'
-            # if letter == 'w':
-            #    noisemaker.toggleState(
-        except AttributeError:
-            # print('Key {0} pressed'.format(key))
-            pass
-
-
-    def on_release(key, thing):
-        #Add your code to stop motor
-        if key == keyboard.Key.esc:
-            # Stop listener
-            return False
 
     def startListen(self):
         # Collect events until released

@@ -4,7 +4,7 @@ feedparser
 webbrowser
 datetime
 pyaudio
-pygame
+pynput
 requests
 requests-oathlib
 responses

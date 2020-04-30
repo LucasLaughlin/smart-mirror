@@ -1,10 +1,10 @@
-from Applet import Applet 
+from Applet import Applet
 
 class ListApplet(Applet):
     def __init__(self):
         self.entries= list()
         self.title= ""
-    
+
     def display(self) -> str:
         self.getData()
         html = """<div class="col m-4">
